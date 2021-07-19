@@ -1,0 +1,4 @@
+{
+  "db": "mongodb+srv://admin:admin@cluster0.fsznj.mongodb.net/scripbox-assignment?retryWrites=true&w=majority",
+  "port": "3000"
+}

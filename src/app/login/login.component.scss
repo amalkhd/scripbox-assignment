@@ -3,6 +3,9 @@
   padding: 20px 40px;
   border-radius: 8px;
   min-width: 340px;
+  .form-control {
+    font-size: 0.9rem;
+  }
   h2 {
     font-weight: 600;
     color: #212121;
@@ -10,6 +13,14 @@
   p {
     color: #717171;
     font-size: 0.8rem;
+    &.create-link {
+      text-align: right;
+      color: #1243f0;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   button {
     width: 100%;
