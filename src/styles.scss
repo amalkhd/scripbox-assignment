@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+$primary-blue: #1243f0;
+
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+
+.bg-grey {
+  background-color: #eee;
+}
+
+.main-wrapper {
+  height: 100vh;
+}
+
+.btn-primary {
+  background-color: $primary-blue;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  &:focus {
+    box-shadow: none;
+    border-color: $primary-blue;
+  }
+}
