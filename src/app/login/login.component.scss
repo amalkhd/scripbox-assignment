@@ -1,11 +1,9 @@
 .login-box {
+  box-shadow: 0 0 18px #eceff1;
   background-color: white;
-  padding: 20px 40px;
+  padding: 25px 20px;
   border-radius: 8px;
   min-width: 340px;
-  .form-control {
-    font-size: 0.9rem;
-  }
   h2 {
     font-weight: 600;
     color: #212121;
@@ -13,13 +11,15 @@
   p {
     color: #717171;
     font-size: 0.8rem;
-    &.create-link {
-      text-align: right;
-      color: #1243f0;
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
+  }
+
+  .create-link {
+    text-align: right;
+    color: #1243f0;
+    cursor: pointer;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
     }
   }
   button {

@@ -2,13 +2,15 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 $primary-blue: #1243f0;
+$dark-text: #212121;
+$light-text: #717171;
 
 body {
   font-family: "Poppins", sans-serif !important;
 }
 
 .bg-grey {
-  background-color: #eee;
+  background-color: #f5f8fa;
 }
 
 .main-wrapper {
@@ -25,7 +27,14 @@ body {
   }
 }
 
+.btn {
+  height: 43px;
+  font-size: 0.8rem;
+}
+
 .form-control {
+  font-size: 0.8rem;
+  height: 43px;
   &:focus {
     box-shadow: none;
     border-color: $primary-blue;

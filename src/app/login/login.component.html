@@ -8,15 +8,20 @@
                     <input name="customerId" [(ngModel)]="customerId" placeholder="Customer ID" type="text"
                         class="form-control">
                 </div>
-                <p *ngIf="isLogin" (click)="isLogin = !isLogin" class="mt-2 mb-0 create-link">Create a customer id</p>
-                <button [disabled]="!customerId" class="btn btn-primary mt-2">Submit</button>
+                <button class="btn btn-primary mt-4">Submit</button>
+                <div class="d-flex justify-content-center">
+                    <p *ngIf="isLogin" (click)="isLogin = !isLogin" class="mt-2 mb-0">Not registered yet?
+                        <span class="create-link">Create
+                            account</span>
+                    </p>
+                </div>
             </form>
         </div>
         <div class="login-box" *ngIf="!isLogin">
             <h2>Get's started</h2>
-            <p>Login with your customer id</p>
+            <p>Start creating an account.</p>
             <form [formGroup]="form" (ngSubmit)="createCustomer()">
-                <div class="form-group mb-4">
+                <div class="form-group mb-2">
                     <input [class.is-invalid]="form.controls.email.invalid && form.controls.email.touched"
                         formControlName="email" type="email" class="form-control" placeholder="Email address">
                     <div class="invalid-feedback text-left"
@@ -27,9 +32,12 @@
                 <div class="form-group">
                     <input formControlName="fullName" type="text" class="form-control" placeholder="Full Name">
                 </div>
-                <p *ngIf="!isLogin" (click)="isLogin = !isLogin" class="mt-2 mb-0 create-link">Already have customer id
-                    ?</p>
-                <button [disabled]="form.invalid" class="btn btn-primary mt-2">Create account</button>
+                <button class="btn btn-primary mt-4">Create account</button>
+                <div class="d-flex justify-content-center">
+                    <p *ngIf="!isLogin" (click)="isLogin = !isLogin" class="mt-2 mb-0">Already a customer ? <span
+                            class="create-link">Login</span>
+                    </p>
+                </div>
             </form>
         </div>
     </div>

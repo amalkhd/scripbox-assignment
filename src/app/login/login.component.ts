@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.customerId) return;
     this.api.getData(`api/customers/${this.customerId}`, {}).subscribe((res: any) => {
       this.auth.setAuthToken(res.data.customerId);
       this.router.navigateByUrl('dashboard');
