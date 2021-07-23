@@ -2,16 +2,22 @@
     <div class="col-12 mt-4">
         <div class="right-content">
             <h2 class="mb-2 home-head">Challenges
-                <span class="logout" (click)="auth.logout()">Logout</span>
+                <div (click)="onAddClick()" class="challenge add ms-auto me-4">
+                    <i class="material-icons-outlined me-4">
+                        add_circle_outline
+                    </i>
+                    Add challenge
+                </div>
+                <div class="sort-wrap me-4">
+                    <span>Sort by</span>
+                    <button class="btn btn-light ms-3 me-2">Created at</button>
+                    <button class="btn btn-light me-3">Upvote</button>
+                </div>
+                <button class="logout btn btn-light" (click)="auth.logout()">Logout</button>
             </h2>
             <div class="row">
                 <div class="col-6 mt-3">
-                    <div (click)="onAddClick()" class="challenge add">
-                        <i class="material-icons-outlined me-4">
-                            add_circle_outline
-                        </i>
-                        Add challenge
-                    </div>
+          
                 </div>
                 <div class="col-6"></div>
                 <div class="col-3 mt-3" *ngFor="let item of data.challenges">
