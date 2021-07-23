@@ -18,7 +18,7 @@ export class ApiService {
   getData(path: string, params: any, secure?: boolean) {
     return this.http.get(`${this.url}${path}`, {
       params: params,
-      headers: secure ? this.createHeader() : this.createHeader()
+      headers: this.createHeader()
     });
   }
 

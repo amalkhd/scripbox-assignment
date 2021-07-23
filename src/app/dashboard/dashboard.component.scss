@@ -1,0 +1,27 @@
+.link-wrap{
+    padding: 0;
+    li{
+        list-style: none;
+        a{
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1243f0;
+            font-size: 14px;
+            font-weight: 500;
+            &:hover{
+                background-color: transparentize(#1243f0, $amount: 0.9);
+            }
+            &.active{
+                background-color: transparentize(#1243f0, $amount: 0.9);
+            }
+            i{
+                margin-right: 10px;
+                font-size: 20px;
+            }
+        }
+    }
+}
