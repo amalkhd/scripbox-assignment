@@ -4,6 +4,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setup
 
-#Install Nodejs and Angular cli
-#npm i
+*Install Nodejs and Angular cli
+*npm i
 
