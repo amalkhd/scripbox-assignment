@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: "root"
 })
 export class AuthService {
-    constructor() { }
+    constructor(private router:Router) { }
 
     setAuthToken(token) {
         localStorage.setItem("authToken", token);
@@ -12,6 +13,6 @@ export class AuthService {
 
     logout() {
         localStorage.clear();
-        window.location.href = "login";
+        this.router.navigateByUrl("login");
     }
 }
