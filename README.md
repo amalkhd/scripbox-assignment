@@ -15,3 +15,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 1. Run ng build --prod
 2. Run node server
 3. Goto http://localhost:3000
+
+# You can use the following Id's to login or create your own id's to login
+* amal466c
+* 123459a84
+* 1234569a87
+
