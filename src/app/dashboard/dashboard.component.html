@@ -1,12 +1,16 @@
 
     <div class="sidebar">
-        <ul class="link-wrap mt-4">
-            <li>
+        <ul class="link-wrap ">
+            <li class="mt-4">
                 <a routerLink="challenge" routerLinkActive="active">
                     <i class="material-icons-outlined">donut_small</i>
                     Challenges</a>
             </li>
+            
         </ul>
+        <div class="logout-wrap">
+                <button class="logout btn btn-light" (click)="auth.logout()">Logout</button>
+        </div>
     </div>
     <div class="right-wrapper">
             <router-outlet></router-outlet>

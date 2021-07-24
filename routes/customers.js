@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const customer = await Customer.findOne({ customerId: req.params.id });
+  const customer = await Customer.findOne({ $or:[{customerId: req.params.id}, {email: req.params.id}] });
   if (!customer) return res.status(404).send("Customer id does not exist");
 
   const data = {

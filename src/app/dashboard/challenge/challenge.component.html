@@ -2,25 +2,30 @@
     <div class="col-12 mt-4">
         <div class="right-content">
             <h2 class="mb-2 home-head">Challenges
-                <div (click)="onAddClick()" class="challenge add ms-auto me-4">
-                    <i class="material-icons-outlined me-4">
+                <div (click)="onAddClick()" class="challenge add ms-auto me-5">
+                    <i class="material-icons-outlined me-2">
                         add_circle_outline
                     </i>
                     Add challenge
                 </div>
                 <div class="sort-wrap me-4">
                     <span>Sort by</span>
-                    <button class="btn btn-light ms-3 me-2">Created at</button>
-                    <button class="btn btn-light me-3">Upvote</button>
+                    <button  (click)="onSortClick('created_at')" [class.active]="data.sort.created_at" class="btn btn-light ms-3 me-2">Created date
+                        <i *ngIf="data.sort.created_at"  class="material-icons-outlined">{{data.sort.created_at === 'desc' ? 'arrow_upward':'arrow_downward'}}</i>
+                    </button>
+                    <button (click)="onSortClick('up_vote')" [class.active]="data.sort.up_vote" class="btn btn-light me-3">
+                        Upvote
+                        <i *ngIf="data.sort.up_vote" class="material-icons-outlined">
+                            {{data.sort.up_vote === 'desc' ? 'arrow_upward':'arrow_downward'}}
+                        </i>
+                    </button>
                 </div>
-                <button class="logout btn btn-light" (click)="auth.logout()">Logout</button>
             </h2>
             <div class="row">
-                <div class="col-6 mt-3">
-          
+                <div style="color: #757575;" class="col-12 mt-5 d-flex align-items-center justify-content-center" *ngIf="!data.challenges?.length && !data.getLoader">
+                    No challenges available
                 </div>
-                <div class="col-6"></div>
-                <div class="col-3 mt-3" *ngFor="let item of data.challenges">
+                <div class="col-sm-4 col-md-3 mt-3" *ngFor="let item of data.challenges">
                     <div class="challenge">
                         <p class="title"> {{item.title}}</p>
                         <p class="desc">{{item.description}}</p>
@@ -30,9 +35,12 @@
                         <div class="actions">
                             <small class="me-auto">{{item.created_at | date:'medium'}}</small>
                             {{item.likes}}
-                            <i (click)="onLikeclick(item)" class="material-icons-outlined">
+                            <i [class.active]="isLiked(item)" (click)="onLikeclick(item)"
+                                class="material-icons-outlined">
                                 recommend
                             </i>
+
+                            <i (click)="deleteChallenge(item)" class="material-icons-outlined">delete</i>
                             <!-- <i class="material-icons-outlined">
                                 edit
                             </i> -->
@@ -41,10 +49,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col mt-5 d-flex align-items-center justify-content-center">
-                    <div *ngIf="data.getLoader" class="spinner-grow chal-loader" role="status">
+                <div  *ngIf="data.getLoader" class="col mt-5 d-flex align-items-center justify-content-center flex-column">
+                    <div class="spinner-grow chal-loader mt-5" role="status">
                         <span class="visually-hidden">Loading...</span>
-                      </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,17 +80,18 @@
                     <p class="mb-2">Select tags <small>(Select atleast 1 tag)</small></p>
                     <div class="tags-list">
                         <span (click)="tag.isActive = !tag.isActive" [class.active]="tag.isActive"
-                        *ngFor="let tag of tags">
-                        <i class="material-icons-outlined">
-                            {{tag.isActive ? "check_box":"check_box_outline_blank"}}
-                        </i>
-                        {{tag.value}}</span>
+                            *ngFor="let tag of tags">
+                            <i class="material-icons-outlined">
+                                {{tag.isActive ? "check_box":"check_box_outline_blank"}}
+                            </i>
+                            {{tag.value}}</span>
                     </div>
 
                 </div>
                 <div class="d-flex justify-content-end  mt-4">
                     <button [disabled]="form.invalid || !isTagSelected || data.postLoader" class="btn btn-primary">
-                        <span *ngIf="data.postLoader" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                        <span *ngIf="data.postLoader" class="spinner-border spinner-border-sm me-2" role="status"
+                            aria-hidden="true"></span>
                         Add</button>
                     <button class="btn btn-light ms-2" (click)="data.isModelOpen = false;resetTags()">Close</button>
                 </div>

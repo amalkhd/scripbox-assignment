@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
     like = await like.save();
 
     challenge = await Challenge.findByIdAndUpdate(
-      req.params.id,
+      req.body.challengeId,
       {
         likes: +challenge.likes + 1,
       },

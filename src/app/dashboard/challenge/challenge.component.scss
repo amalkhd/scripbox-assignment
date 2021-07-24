@@ -18,14 +18,15 @@ $tinted-blue: transparentize($primary-blue, 0.2);
         display: flex;
         align-items: center;
         flex-direction: row;
-        background-color:transparentize($primary-blue, 0.95);
-        color: $primary-blue;
-        border: 1px solid transparentize($primary-blue, 0.8);
+        background-color:$primary-blue;
+        color: white;
+        border: none;
         cursor: pointer;
         transition: all 0.2s ease-in;
         font-weight: 500;
+        font-size: 12px;
         &:hover{
-        background-color:transparentize($primary-blue, 0.9);
+        background-color:transparentize($primary-blue, 0.1);
         border-color: $tinted-blue;
         }
     }
@@ -129,31 +130,50 @@ $tinted-blue: transparentize($primary-blue, 0.2);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 24px;
+}
+
+
+   .sort-wrap{
+    display: flex;
+    align-items: center;
     font-weight: 500;
-    .sort-wrap{
-        display: flex;
-        align-items: center;
-        span{
-            font-size: 14px;
-        }
-        .btn{
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        height: 100%;
+        background-color:#bdbdbd;
+    }
+    span{
+        font-size: 12px;
+        color: #424242;
+    }
+    .btn{
+        font-size: 12px;
+        color: #424242;
+        background-color: white;
+        border-color: #e0e0e0;
+        border-radius: 8px;
         font-weight: 500;
+         display: flex;
+        align-items: center;
+        &:focus{
+            outline: 0;
+            box-shadow: none;
         }
+    &.active{
+        // background-color:transparentize($primary-blue, 0.9);
+        color: $tinted-blue ;
+        border: 1px solid $tinted-blue;
+    }
+    i{
+        margin-left: 5px;
+        font-size: 18px;
+    }
     }
 }
-   .logout{
-       font-size: 14px;
-       cursor: pointer;
-       color: #424242;
-       transition: all 0.2s ease-in;
-       padding: 10px;
-       border-radius: 8px;
-       background-color: white;
-       border:none;
-        &:hover{
-        background-color:transparentize($primary-blue, 0.95);
-        color: $primary-blue;
-
-        }
-
-   }

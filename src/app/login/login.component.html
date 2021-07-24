@@ -3,10 +3,10 @@
         <div class="col-md-4 offset-md-4 d-flex align-items-center justify-content-center">
             <div class="login-box" *ngIf="isLogin">
                 <h2>Log in</h2>
-                <p>Login with your customer id</p>
+                <p>Enter you login credentials</p>
                 <form (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                        <input name="customerId" [(ngModel)]="customerId" placeholder="Customer ID" type="text"
+                        <input name="customerId" [(ngModel)]="customerId" placeholder="Customer ID or Email address" type="text"
                             class="form-control">
                     </div>
                     <button class="btn btn-primary mt-4">
@@ -20,7 +20,15 @@
                     </div>
                 </form>
             </div>
-            <div class="login-box" *ngIf="!isLogin">
+            <div class="login-box account-created d-flex" *ngIf="account">
+                <i class="material-icons-outlined">done</i>
+                <h5>Congrats {{account.email}} Account created sucessfully</h5>
+                <small>Please use your generated customer ID or registered email address to login</small>
+              
+                <h5 class="c-id">{{account.customerId}}</h5>
+                <p class="create-link mt-2 mb-0" (click)="isLogin = true;account = false;">Goto Login</p>
+            </div>
+            <div class="login-box" *ngIf="!isLogin && !account">
                 <h2>Get's started</h2>
                 <p>Start creating an account.</p>
                 <form [formGroup]="form" (ngSubmit)="createCustomer()">
@@ -49,3 +57,5 @@
         </div>
     </div>
 </div>
+
+

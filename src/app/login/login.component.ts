@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   customerId: string;
   isLogin: boolean = true;
   form: FormGroup;
-  loading:boolean = false;
+  loading: boolean = false;
+  account:any = false;
   constructor(private _fb: FormBuilder, private api: ApiService, private auth: AuthService, private router: Router) {
     this.form = _fb.group({
       email: [
@@ -39,14 +40,18 @@ export class LoginComponent implements OnInit {
       this.auth.setAuthToken(res.data._id);
       this.loading = false;
       this.router.navigateByUrl('dashboard');
+    }, err=>{
+      this.loading = false;
     })
   }
 
   createCustomer() {
     if (this.form.invalid) return;
     this.loading = true;
-    this.api.postData("api/customers", this.form.value).subscribe(res => {
-      this.isLogin = true;
+    this.api.postData("api/customers", this.form.value).subscribe((res:any) => {
+      this.loading = false;
+      this.account = res;
+    }, err => {
       this.loading = false;
     })
   }

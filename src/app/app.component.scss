@@ -1,0 +1,19 @@
+.my-toast{
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    height: 50px;
+    display: flex;
+    min-width: 230px;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 0 15px;
+    &.error{
+        background-color: #ef5350;
+    }
+    &.success{
+        background-color: #4caf50;
+    }
+}

@@ -5,8 +5,15 @@ const { Customer, } = require("../models/customer");
 
 
 router.get("/", async (req, res) => {
-  const { pageNum} = req.query;
+  const { pageNum, created_at, up_vote:likes} = req.query;
   const _id =  req.header('x-auth-token');
+
+  let sortParams = {};
+  
+  if(created_at) sortParams.created_at = created_at === 'desc' ? -1:1;
+  if(likes) sortParams.likes = likes === 'desc' ? -1:1;;
+
+  sortParams = Object.keys(sortParams).length ? sortParams :null;
 
   let challenge = await Challenge.aggregate([
     {
@@ -19,7 +26,7 @@ router.get("/", async (req, res) => {
       }
     },
     {
-      $sort: { _id: -1 }
+      $sort: sortParams || {_id:-1}
     }
   ]);
 
